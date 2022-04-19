@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('surveys', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(User::class, 'user_id')->constrained()->onDelete('cascade');
+            $table->string('image')->nullable();
+            $table->string('title');
+            $table->string('slug');
+            $table->tinyInteger('status');
+            $table->text('description')->nullable();
+            $table->timestamp('expired_at');
             $table->timestamps();
         });
     }

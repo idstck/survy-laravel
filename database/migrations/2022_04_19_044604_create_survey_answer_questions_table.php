@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('survey_answer_questions', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(SurveyQuestion::class, 'survey_question_id')->onDelete('cascade');
+            $table->foreignIdFor(SurveyAnswer::class, 'survey_asnwer_id')->onDelete('cascade');
+            $table->text('answer');
             $table->timestamps();
         });
     }
